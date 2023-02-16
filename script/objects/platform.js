@@ -3,7 +3,6 @@ var platform = function(game){
     //this.pltYMin = 99999;
     game.global.pltYMin = 99999;
 };
-
     platform.prototype = {
         create: function(){
            this.pltGroup = game.add.physicsGroup(Phaser.Physics.ARCADE);
@@ -23,9 +22,10 @@ var platform = function(game){
                 platform = this.pltGroup.getFirstDead();
                 platform.body.immovable = true;
                 platform.scale.setTo(0.3);
-                platform.anchor.setTo(0.5,1);
+                platform.anchor.setTo(0.5,0.5);
                 if (window.innerWidth* window.devicePixelRatio<=950) {
-                    platform.reset(230*window.innerWidth/1000*i,100*i);
+                    console.log(widthRatio)
+                    platform.reset(230*i*widthRatio,120*i);
                 } else {
                     platform.reset(230*i,120*i);
                 }
@@ -49,11 +49,11 @@ var platform = function(game){
             platform.anchor.setTo(0.5,0.5);  
             var x,y = null;
             if (window.innerWidth* window.devicePixelRatio<=950) {
-                x = game.rnd.integerInRange(400*window.innerWidth/1000,1000*0.6);
+                x = game.rnd.integerInRange(400*widthRatio,1000*widthRatio);
             } else {
                 x = game.rnd.integerInRange(400,1000);
             }
-            var y = game.global.pltYMin - (game.rnd.integerInRange(60,150));
+            var y = game.global.pltYMin - (game.rnd.integerInRange(70,150));
             
             platform.reset(x,y);
             return;  

@@ -1,7 +1,7 @@
 var background = function(game){
     
 };
-let widthRatio = window.innerWidth* window.devicePixelRatio/1000;
+let widthRatio = window.innerWidth* window.devicePixelRatio/1200;
 let heightRatio = window.innerHeight* window.devicePixelRatio/800;
 let height = window.innerHeight * window.devicePixelRatio;
     background.prototype = {
@@ -12,11 +12,8 @@ let height = window.innerHeight * window.devicePixelRatio;
             this.bg.anchor.setTo(0,0);
             
             if(window.innerWidth* window.devicePixelRatio<=950) {
-                console.log((window.innerWidth * window.devicePixelRatio/3500)/widthRatio)
                   this.bg.scale.setTo((window.innerWidth * window.devicePixelRatio/3500)/widthRatio);
-                console.log( 'scale',(window.innerWidth * window.devicePixelRatio/3500)/heightRatio);
-            }
-            else {this.bg.scale.setTo((window.innerWidth * window.devicePixelRatio/3500));}
+            } else {this.bg.scale.setTo(window.innerWidth * window.devicePixelRatio/3500);}
           
             this.bg.fixedToCamera = true;
             
@@ -25,7 +22,10 @@ let height = window.innerHeight * window.devicePixelRatio;
             this.cactus.fixedToCamera = true;
             this.cactus.anchor.setTo(0.5,0.5);
             game.physics.arcade.enable(this.cactus);
-            this.cactus.body.setSize(1000,30,5,20);
+            
+            if(window.innerWidth* window.devicePixelRatio<=950) {
+                this.cactus.body.setSize(1000,30*widthRatio,5,20);
+          } else {this.cactus.body.setSize(1000,30,5,20);}
             this.cactus.body.immovable = true;
         },
         

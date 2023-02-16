@@ -96,6 +96,7 @@ var playState = function(game){
 
             // game over if 3 life used
             if(this.lifeptr==3){
+                this.player.frame = 4; 
                 this.gameOver();
             }
 
@@ -148,7 +149,7 @@ var playState = function(game){
 
         coconutVsPlayer: function(player,coconut){
             game.global.cocoSound.play();
-            game.player.frame = 4; 
+            
             var life = this.lifeGroup.getFirstExists(true);
             if(life){
                 this.lifeptr++;
@@ -173,16 +174,16 @@ var playState = function(game){
             this.lifeptr = 0;
         },
 
-        //  gameOver: function(){
-        //     this.killAll();
-        //     this.state.start('LeaderBoard');
-        // },
+         gameOver: function(){
+            this.killAll();
+            this.state.start('LeaderBoard');
+        },
 
         playerDead: function(){
-            this.jolly.player.frame = 5;
             this.jolly.player.kill();
             var flag = true;
             if(game.global.soundPlay){
+                
                 game.global.deadSound.play();
                 flag = true;
             }

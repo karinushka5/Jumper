@@ -28,7 +28,8 @@ var loadState = function(game){
           this.load.image('background','assets/bg.jpg');
           this.load.image('cactus','assets/cactus.png');
           this.load.image('platform_safe','assets/platform_safe.png');
-         
+          this.game.load.image('forest-back', 'assets/title_bg_2.jpg');
+          this.game.load.image('forest-mid', 'assets/title_bg_1.webp');
           
           //load fruties
           this.load.image('fruit0','assets/fruits/banana_01.png');
@@ -47,7 +48,7 @@ var loadState = function(game){
           // load GUI
            this.load.image('play','assets/GUI/play.png');    
            this.load.image('setting','assets/GUI/setting.png');    
-           this.load.image('credit','assets/GUI/about.png');    
+           this.load.image('credit','assets/GUI/credit.png');    
            this.load.image('howtoplay','assets/GUI/howToPlay.png');      
            this.load.spritesheet('sound-sprite','assets/GUI/sound.png',70,60); 
            this.load.image('title-bg','assets/GUI/bg.png');

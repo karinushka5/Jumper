@@ -41,20 +41,19 @@ var player = function(game){
             this.standing = this.player.body.touching.down || this.player.body.blocked.down;
             
             if(this.jumpButton.isDown && this.standing==true){
-                this.player.frame = 6;
+                this.player.frame = 0;
                 this.player.body.velocity.y = -500;
             }
             else if(this.cursor.left.isDown){
                 this.player.frame = 5;
-                
                 this.player.body.velocity.x = -150;
             }
             else if(this.cursor.right.isDown){
-                this.player.frame = 1;   
+                this.player.frame = 2;   
                 this.player.body.velocity.x = 150;
             }
             else{
-                this.player.frame = 8;
+                this.player.frame = 0;
                 this.player.body.velocity.x = 0;
             }
             
