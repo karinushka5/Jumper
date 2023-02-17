@@ -57,7 +57,6 @@ this.game.state.start('Menu');
             this.gamedev = this.add.sprite(this.world.centerX-150,350,'coder');
             this.gamedev.anchor.setTo(0.5);
             this.gamedev.scale.setTo(0.2);
-            
             this.devcredit = this.add.sprite(this.world.centerX+120,150,'name');
             this.devcredit.anchor.setTo(0.5);
             
