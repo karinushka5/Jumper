@@ -30,6 +30,7 @@ var loadState = function(game){
           this.load.image('platform_safe','assets/platform_safe.png');
           this.game.load.image('forest-back', 'assets/title_bg_2.jpg');
           this.game.load.image('forest-mid', 'assets/title_bg_1.webp');
+          this.game.load.image('lianas', 'assets/lianas.jpg');
           
           //load fruties
           this.load.image('fruit0','assets/fruits/banana_01.png');
@@ -63,10 +64,9 @@ var loadState = function(game){
            this.load.image('coconut','assets/coconut.png'); // fruit.js
            
           //credit
-          this.load.image('social-link','assets/credit/credit-social-link.png');
-          this.load.image('code','assets/credit/code.png');
-          this.load.image('devcredit','assets/credit/devcredit.png');
-          this.load.image('shohan','assets/credit/shohan.png');
+          this.load.image('git','assets/credit/git.png');
+          this.load.image('name','assets/credit/name.png');
+          this.load.image('coder','assets/credit/coder.png');
           
           // how to play
           this.load.image('how-to-play','assets/how-to-play.png');
@@ -74,7 +74,7 @@ var loadState = function(game){
           // sounds
           this.load.audio('fruitGulp','sounds/fruitGulp.mp3',true);
           this.load.audio('menuBg','sounds/menuBg.mp3',true);
-          
+          this.load.audio('main','sounds/main.mp3',true);
           this.load.audio('jumpSound','sounds/jump.mp3',true);
 
           this.load.audio('gemSound','sounds/gemSound.mp3',true);

@@ -32,11 +32,15 @@ var playState = function(game){
             this.physics.startSystem(Phaser.Physics.ARCADE);
 
             game.global.menuBgSound.stop();
+             
+            game.global.mainSound = this.game.add.audio('main',1,true);
             game.global.jumpSound = this.game.add.audio('jumpSound',1,false);
             game.global.gemSound = this.game.add.audio('gemSound',1,false);
             game.global.deadSound = this.game.add.audio('deadSound',1,false);
             game.global.cocoSound = this.game.add.audio('cocoSound',1,false);
-
+            if(game.global.soundPlay){
+                game.global.mainSound.play();
+            }
           this.background = new background(game);
           this.background.create();
 
@@ -84,7 +88,8 @@ var playState = function(game){
 
             // handle fruits
             this.fruits.update();
-
+            
+            
             game.global.collideFlag = false; // // checking variable for score tweening.
     this.physics.arcade.overlap(this.jolly.player,this.fruits.fruitsGroup,this.playerVsFruits,null,this);
 
@@ -96,7 +101,6 @@ var playState = function(game){
 
             // game over if 3 life used
             if(this.lifeptr==3){
-                this.player.frame = 4; 
                 this.gameOver();
             }
 
@@ -171,6 +175,7 @@ var playState = function(game){
             this.fruits.gemsGroup.destroy();
             this.gameScore.scoreLabel.kill();
             this.pauseButton.kill();
+            this.game.global.mainSound.stop()
             this.lifeptr = 0;
         },
 
@@ -214,6 +219,7 @@ var playState = function(game){
 
         handlePause: function(){
             this.physics.arcade.isPaused = (this.physics.arcade.isPaused) ? false: true;
+            this.game.global.mainSound.stop()
              // this.physics.arcade.isPaused = true;
         },
 

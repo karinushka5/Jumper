@@ -55,16 +55,16 @@ this.game.state.start('Menu');
         
         about: function(){
             
-            this.gamedev = this.add.sprite(90,250,'shohan');
+            this.gamedev = this.add.sprite(this.world.centerX-150,350,'coder');
             this.gamedev.anchor.setTo(0.5);
-            this.gamedev.scale.setTo(0.5,0.5);
+            this.gamedev.scale.setTo(0.2);
             
-            this.devcredit = this.add.sprite(200,150,'devcredit');
+            this.devcredit = this.add.sprite(this.world.centerX+120,150,'name');
             this.devcredit.anchor.setTo(0.5);
             
-            this.socialLink = this.add.sprite(150,380,'social-link');
-            this.socialLink.anchor.setTo(0.5);
-            //this.socialLink.scale.setTo(0.9,0.9);
+            this.git = this.add.sprite(this.world.centerX+300,350,'git');
+            this.git.anchor.setTo(0.3);
+            this.git.scale.setTo(0.4);
         }
         
     }
