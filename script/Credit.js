@@ -50,7 +50,6 @@ this.game.state.start('Menu');
 },this);
         this.backBtn.anchor.setTo(0.5,0.5);
         this.backBtn.input.useHandCursor = true;
-            
         },
         
         about: function(){
