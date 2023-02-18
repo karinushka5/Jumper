@@ -25,10 +25,10 @@ let screenOrient = screen.orientation.type;
             else{
                 
                 this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-                this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+                // this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
                 this.scale.setGameSize(window.innerWidth,window.innerHeight);
                 
-                this.scale.setMinMax(320,500);       
+                this.scale.setMinMax(320,300);       
                 this.scale.forceOrientation(true,false);//(landscape,portrait)
                 this.scale.pageAlignHorizontally = true;
                 this.scale.pageAlignVertically = true;
@@ -36,7 +36,7 @@ let screenOrient = screen.orientation.type;
                 this.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);
                 this.scale.updateLayout(true);
                 this.scale.refresh();
-                
+              
                 }
             
         },
@@ -49,6 +49,8 @@ let screenOrient = screen.orientation.type;
 
             document.getElementById('gameContainer').style.display = 'none';
             this.game.paused = true;
+            this.game.update();
+
             }
             
         },
@@ -57,13 +59,8 @@ let screenOrient = screen.orientation.type;
             document.getElementById('gameContainer').style.display = 'block';
             document.getElementById('orientation').style.display = 'none';
             this.game.paused = false;
-            if (!this.game.device.desktop){ 
-                this.game.scale.setShowAll();
-                this.game.scale.refresh();
-                this.game.scale.setMaximum();
-                this.scale.setScreenSize(true);
-                this.game.scale.startFullScreen(false);
-            }
+            this.game.update();
+            
             },
         
         preload: function(){
@@ -77,3 +74,6 @@ let screenOrient = screen.orientation.type;
         }
         
     }
+    window.addEventListener('orientationchange', () => {
+        window.location.reload();
+    })
