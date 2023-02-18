@@ -75,5 +75,10 @@ let screenOrient = screen.orientation.type;
         
     }
     window.addEventListener('orientationchange', () => {
-        window.location.reload();
+        const orientation = window.matchMedia('(orientation: landscape)')
+        window.location.reload()
+        if (orientation.matches) {
+            window.scrollTo(0,1);
+            document.documentElement.requestFullScreen();
+        }
     })
