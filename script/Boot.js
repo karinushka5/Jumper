@@ -3,7 +3,7 @@ var bootState = function(game){
     
     
 };
-
+let screenOrient = screen.orientation.type;
     bootState.prototype = {
         
         init: function(){
@@ -25,8 +25,11 @@ var bootState = function(game){
             else{
                 
                 this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-                this.scale.setMinMax(250,380,480,800);       
-                this.scale.forceOrientation(false,true);//(landscape,portrait)
+                this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+                this.scale.setGameSize(window.innerWidth,window.innerHeight);
+                
+                this.scale.setMinMax(320,500);       
+                this.scale.forceOrientation(true,false);//(landscape,portrait)
                 this.scale.pageAlignHorizontally = true;
                 this.scale.pageAlignVertically = true;
                 this.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
@@ -37,14 +40,31 @@ var bootState = function(game){
                 }
             
         },
-        
+       
         enterIncorrectOrientation: function(){
-            document.getElementById('orientation').style.display = 'block';
+            if (screenOrient ='portrait-primary') {
+            const rotate = document.getElementById('orientation');
+            rotate.style.display = 'flex';
+            rotate.style.top = window.innerHeight/2+'px';
+
+            document.getElementById('gameContainer').style.display = 'none';
+            this.game.paused = true;
+            }
+            
         },
         
         leaveIncorrectOrientation: function(){
+            document.getElementById('gameContainer').style.display = 'block';
             document.getElementById('orientation').style.display = 'none';
-        },
+            this.game.paused = false;
+            if (!this.game.device.desktop){ 
+                this.game.scale.setShowAll();
+                this.game.scale.refresh();
+                this.game.scale.setMaximum();
+                this.scale.setScreenSize(true);
+                this.game.scale.startFullScreen(false);
+            }
+            },
         
         preload: function(){
            // loading bar goes here          

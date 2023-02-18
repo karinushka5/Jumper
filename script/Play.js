@@ -1,14 +1,10 @@
 // Main game control script
   // In case the user resizes the window afterwards
-  window.addEventListener("resize", () => {
-    let width = window.innerWidth * window.devicePixelRatio;
-    let height = window.innerHeight * window.devicePixelRatio;
-    game.scale.resize(width, height);
-    game.scene.scenes.forEach(function (scene) {
-        console.log('work!')
-      scene.cameras.main.setViewport(0, 0, width, height);
-    });
-  },false);
+//   window.addEventListener("resize", () => {
+//     let width = window.innerWidth * window.devicePixelRatio;
+//     let height = window.innerHeight * window.devicePixelRatio;
+//     game.scale.resize(width, height);
+//   },false);
   
 var playState = function(game){
     this.game = game;
