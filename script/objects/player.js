@@ -38,8 +38,13 @@ var player = function(game){
         },
         
         handleMovement: function(){
-            this.standing = this.player.body.touching.down || this.player.body.blocked.down;
             
+            
+            function touchMoveRight() {
+                player.prototype.handleMovement(this.cursor.right.isDown);
+            };
+            this.standing = this.player.body.touching.down || this.player.body.blocked.down;
+           
             if(this.jumpButton.isDown && this.standing==true){
                 this.player.frame = 0;
                 this.player.body.velocity.y = -500;
@@ -47,10 +52,16 @@ var player = function(game){
             else if(this.cursor.left.isDown){
                 this.player.frame = 5;
                 this.player.body.velocity.x = -150;
+                
             }
             else if(this.cursor.right.isDown){
                 this.player.frame = 2;   
                 this.player.body.velocity.x = 150;
+                function touchMoveRight(event) {
+                    console.log(event);
+                    this.player.frame = 2;   
+                    this.player.body.velocity.x = 150;
+                }
             }
             else{
                 this.player.frame = 0;
@@ -68,3 +79,4 @@ var player = function(game){
             //game.debug.text(this.standing,62,135); //return false when air
         }
     } 
+   

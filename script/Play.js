@@ -5,7 +5,7 @@
 //     let height = window.innerHeight * window.devicePixelRatio;
 //     game.scale.resize(width, height);
 //   },false);
-  
+
 var playState = function(game){
     this.game = game;
     this.background = null; // image
@@ -24,7 +24,7 @@ var playState = function(game){
         create: function(){
             console.log(game.state.getCurrentState());
             //this.game.add.plugin(Phaser.Plugin.Debug); // debug plugin
-
+            
             this.physics.startSystem(Phaser.Physics.ARCADE);
 
             game.global.menuBgSound.stop();
@@ -71,7 +71,28 @@ var playState = function(game){
             this.pauseButton.anchor.setTo(0.5,0.5);
             this.pauseButton.scale.setTo(0.4,0.4);
             this.pauseButton.fixedToCamera = true;
-
+            
+            if (window.innerWidth<=950) {
+                const btn = document.getElementsByClassName('btn_hide')[0];
+                btn.classList.add('btns');
+                const btns = document.getElementsByClassName('btns')[0];
+                btns.style.top = window.innerHeight-50+'px';
+                const btnLeft = document.getElementById('moveLeft');
+                btnLeft.style.marginRight = window.innerWidth-100+'px';
+                btn.classList.remove('btn_hide');
+            };
+            if (window.innerWidth>950) {
+                let btn = document.getElementsByClassName('btns')[0];
+                btn.classList.add('btn_hide');
+                btn.classList.remove('btns');
+            }   ;
+            document.getElementById('moveLeft').addEventListener("touchstart", ()=>{
+                this.jolly.cursor.right.isDown=false;
+                this.jolly.cursor.left.isDown=true;});
+            document.getElementById('moveRight').addEventListener("touchstart", () => {
+                this.jolly.cursor.left.isDown=false;
+                this.jolly.cursor.right.isDown=true;});
+            
         },
 
         update: function(){
@@ -79,7 +100,6 @@ var playState = function(game){
             this.physics.arcade.overlap(this.jolly.player,this.background.cactus,this.playerDead,null,this);
             this.physics.arcade.collide(this.jolly.player,this.platforms.pltGroup,this.playerVsPlatform,null,this);
             this.jolly.handleMovement();
-
             this.platforms.update();
 
             // handle fruits
@@ -173,15 +193,20 @@ var playState = function(game){
             this.pauseButton.kill();
             this.game.global.mainSound.stop()
             this.lifeptr = 0;
+
         },
 
          gameOver: function(){
             this.killAll();
+            
             this.state.start('LeaderBoard');
         },
 
         playerDead: function(){
             this.jolly.player.kill();
+            let btn = document.getElementsByClassName('btns')[0];
+                btn.classList.add('btn_hide');
+                btn.classList.remove('btns');
             var flag = true;
             if(game.global.soundPlay){
                 

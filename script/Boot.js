@@ -9,7 +9,7 @@ let screenOrient = screen.orientation.type;
         init: function(){
             
             console.log(game.state.getCurrentState());
-                
+               
             if (this.game.device.desktop){
             
                 this.scale.pageAlignHorizontally = true;
@@ -19,7 +19,7 @@ let screenOrient = screen.orientation.type;
                 this.scale.setMinMax(320,380); // (minwidth,minheight,maxwidth,maxheight)
                 this.scale.updateLayout(true);
                 this.scale.refresh();
-                
+                 
                 }
             
             else{
@@ -36,6 +36,7 @@ let screenOrient = screen.orientation.type;
                 this.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);
                 this.scale.updateLayout(true);
                 this.scale.refresh();
+                
               
                 }
             
@@ -62,6 +63,7 @@ let screenOrient = screen.orientation.type;
             this.game.update();
             
             },
+            
         
         preload: function(){
            // loading bar goes here          
@@ -71,6 +73,7 @@ let screenOrient = screen.orientation.type;
             
             
             this.state.start('Preload');
+           
         }
         
     }
