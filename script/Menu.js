@@ -15,18 +15,37 @@ var menuState = function(game){
                 this.game.physics.startSystem(Phaser.Physics.ARCADE);
                 //Set the games background colour
                 this.game.stage.backgroundColor = '#697e96';
+                
+                if(window.innerWidth<=950) {
+                    this.forestBack = this.game.add.tileSprite(0,
+                        this.game.height - this.game.cache.getImage('forest-back').height-320,
+                        this.game.width,
+                        this.game.cache.getImage('forest-back').height,
+                        'forest-back'
+                    );
+                    this.forestBack.scale.setTo(1.4);
+                    this.forestMid = this.game.add.tileSprite(0,
+                        this.game.height - this.game.cache.getImage('forest-mid').height-60,
+                        this.game.width,
+                        this.game.cache.getImage('forest-mid').height,
+                        'forest-mid'
+                    );
+                     this.forestMid.scale.setTo(1.2);
+              } else {
                 this.forestBack = this.game.add.tileSprite(0,
                     this.game.height - this.game.cache.getImage('forest-back').height,
                     this.game.width,
                     this.game.cache.getImage('forest-back').height,
                     'forest-back'
                 );
+               
                 this.forestMid = this.game.add.tileSprite(0,
                     this.game.height - this.game.cache.getImage('forest-mid').height+50,
                     this.game.width,
                     this.game.cache.getImage('forest-mid').height,
                     'forest-mid'
                 );
+              }
             
             game.global.menuBgSound = this.game.add.audio('menuBg',1,true);
             

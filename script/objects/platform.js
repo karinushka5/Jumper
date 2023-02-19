@@ -12,20 +12,19 @@ var platform = function(game){
            this.pltGroup.setAll('body.checkCollision.down',false); 
            this.pltGroup.setAll('body.checkCollision.left',false);
            this.pltGroup.setAll('body.checkCollision.right',false);
-           this.pltGroup.callAll('body.setSize','body',250,50,5,0);
+           this.pltGroup.callAll('body.setSize','body',250,60,5,0);
            
         },
             
         initialPlatforms: function(){
             var platform;
-            for(var i=1;i<=6;i++){
+            for(var i=1;i<=5;i++){
                 platform = this.pltGroup.getFirstDead();
                 platform.body.immovable = true;
                 platform.scale.setTo(0.3);
                 platform.anchor.setTo(0.5,0.5);
-                if (window.innerWidth* window.devicePixelRatio<=950) {
-                    console.log(widthRatio)
-                    platform.reset(230*i*widthRatio,120*i);
+                if (window.innerWidth<=950) {
+                    platform.reset(500*i*widthRatio,160*i);
                 } else {
                     platform.reset(230*i,120*i);
                 }
@@ -36,7 +35,7 @@ var platform = function(game){
         handlePlatform: function(elem){
             game.global.pltYMin  = Math.min(game.global.pltYMin ,elem.y);
             
-            if(elem.y>game.camera.y+game.height+50){
+            if(elem.y>game.camera.y+game.height){
                 elem.kill();
                 this.platformCreate();
             }
@@ -48,8 +47,8 @@ var platform = function(game){
             platform.body.immovable = true; 
             platform.anchor.setTo(0.5,0.5);  
             var x,y = null;
-            if (window.innerWidth* window.devicePixelRatio<=950) {
-                x = game.rnd.integerInRange(400*widthRatio,1000*widthRatio);
+            if (window.innerWidth<=950) {
+                x = game.rnd.integerInRange(700*widthRatio,1800*widthRatio);
             } else {
                 x = game.rnd.integerInRange(400,1000);
             }

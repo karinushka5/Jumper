@@ -9,7 +9,12 @@ var player = function(game){
     player.prototype = {
         
         create: function(){ 
-            this.player = game.add.sprite(game.world.centerX+300,game.world.centerY,'jolly',1);
+            
+            if (window.innerWidth<=950) {
+                this.player = game.add.sprite(game.world.centerX+300,game.world.centerY,'jolly',1);
+            } else {
+                this.player = game.add.sprite(game.world.centerX+300,game.world.centerY,'jolly',1);
+            }
             this.player.anchor.setTo(0.5,0.5);
             game.physics.arcade.enable(this.player);
             this.player.body.setSize(50,55,0,0);
@@ -48,6 +53,9 @@ var player = function(game){
             if(this.jumpButton.isDown && this.standing==true){
                 this.player.frame = 0;
                 this.player.body.velocity.y = -500;
+                if (window.innerWidth<=950){
+                    this.player.body.velocity.y = -650;
+                }
             }
             else if(this.cursor.left.isDown){
                 this.player.frame = 5;

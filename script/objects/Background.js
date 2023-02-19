@@ -1,8 +1,8 @@
 var background = function(game){
     
 };
-let widthRatio = window.innerWidth* window.devicePixelRatio/1200;
-let heightRatio = window.innerHeight* window.devicePixelRatio/800;
+let widthRatio = window.innerWidth/1200;
+let heightRatio = window.innerHeight/800;
 let height = window.innerHeight * window.devicePixelRatio;
     background.prototype = {
         
@@ -23,8 +23,9 @@ let height = window.innerHeight * window.devicePixelRatio;
             this.cactus.anchor.setTo(0.5,0.5);
             game.physics.arcade.enable(this.cactus);
             
-            if(window.innerWidth* window.devicePixelRatio<=950) {
-                this.cactus.body.setSize(1000,30*widthRatio,5,20);
+            if(window.innerWidth<=950) {
+            
+                this.cactus.body.setSize(1300,30*0.5,5,20);
           } else {this.cactus.body.setSize(1000,30,5,20);}
             this.cactus.body.immovable = true;
         },

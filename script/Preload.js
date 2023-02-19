@@ -10,19 +10,7 @@ var loadState = function(game){
 
           var Font = "40px Rowdies";
             this.loadText = this.add.text(this.world.centerX,this.world.centerY,'loading ',{font: Font, fill: '#247719', stroke: '#ccff00', strokeThickness: 2});
-          this.loadText.anchor.setTo(0.5,0.5);
-          
-          /*
-          this.loadingBg = this.add.sprite(this.world.centerX,this.world.centerY,'loadingbg');
-          this.loadingBg.anchor.setTo(0.5,0.5);
-          this.loadingBg.scale.setTo(0.5,0.5);
-          
-          this.loadingBar = this.add.sprite(this.world.centerX,this.world.centerY,'loadingbar');
-          this.loadingBar.anchor.setTo(0.5,0.5);
-          this.loadingBar.scale.setTo(0.5,1);
-          this.load.setPreloadSprite(this.loadingBar);
-          this.loadingBar.x = this.world.centerX - this.loadingBar.width/2;
-          */
+          this.loadText.anchor.setTo(0.5,0.5)
           
           // load all objcet 
           this.load.image('background','assets/bg.jpg');

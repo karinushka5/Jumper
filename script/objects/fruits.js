@@ -88,9 +88,9 @@ var fruits = function(game){
            var fruit;
             for(var i=1;i<=15;i++){
                 fruit = this.fruitsGroup.getRandom();
-                if (window.innerWidth* window.devicePixelRatio<=950){
-                    var x = game.rnd.integerInRange(250*widthRatio,900*widthRatio);
-                    var y = game.rnd.integerInRange(50*heightRatio,400*heightRatio);
+                if (window.innerWidth<=950){
+                    var x = game.rnd.integerInRange(600*widthRatio,1800*widthRatio);
+                    var y = game.rnd.integerInRange(50*heightRatio,300*heightRatio);
                 } else {
                     var x = game.rnd.integerInRange(250,900);
                     var y = game.rnd.integerInRange(50,400);
@@ -114,8 +114,8 @@ var fruits = function(game){
             this.min = game.camera.y;
             this.max = game.camera.y+game.height;
             this.y = game.world.bounds.y+game.rnd.integerInRange(1500,1800); 
-            window.innerWidth* window.devicePixelRatio<=950?
-            this.x = game.rnd.integerInRange(250*widthRatio,950*widthRatio): 
+            window.innerWidth<=950?
+            this.x = game.rnd.integerInRange(600*widthRatio,1800*widthRatio): 
             this.x = game.rnd.integerInRange(250,950);              
             Phaser.ArrayUtils.shuffle(this.fruitsGroup);
             this.fruitsGroup.updateZ();
@@ -134,7 +134,7 @@ var fruits = function(game){
                 if(gem){
                 //this.y = game.rnd.integerInRange(this.min,this.min-500);
                 var y = game.world.bounds.y+game.rnd.integerInRange(1500,1800);    
-                this.x = game.rnd.integerInRange(250*widthRatio,950*widthRatio);
+                this.x = game.rnd.integerInRange(600*widthRatio,1800*widthRatio);
                 gem.reset(this.x+3,y);
             }
           }
@@ -152,8 +152,8 @@ var fruits = function(game){
                 var coco = this.coconutGroup.getFirstDead();
                 if(coco){
                 var y = game.world.bounds.y+game.rnd.integerInRange(1500,1800);
-                window.innerWidth* window.devicePixelRatio<=950?
-                this.x = game.rnd.integerInRange(30*widthRatio,320*widthRatio): 
+                window.innerWidth<=950?
+                this.x = game.rnd.integerInRange(400*widthRatio,1500*widthRatio): 
                 this.x = game.rnd.integerInRange(30,320); 
                 coco.reset(this.x,y);
             }
