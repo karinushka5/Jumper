@@ -11,9 +11,9 @@ var player = function(game){
         create: function(){ 
             
             if (window.innerWidth<=950) {
-                this.player = game.add.sprite(game.world.centerX+300,game.world.centerY,'jolly',1);
+                this.player = game.add.sprite(game.world.centerX+300,game.world.centerY,'cat',1);
             } else {
-                this.player = game.add.sprite(game.world.centerX+300,game.world.centerY,'jolly',1);
+                this.player = game.add.sprite(game.world.centerX+300,game.world.centerY,'cat',1);
             }
             this.player.anchor.setTo(0.5,0.5);
             game.physics.arcade.enable(this.player);
