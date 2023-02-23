@@ -1,10 +1,5 @@
-var helpState = function(game){
+var helpState = {
     // how to play state
-    
-};
-
-
-    helpState.prototype = {
         
         create: function(){
             // console.log(game.state.getCurrentState());

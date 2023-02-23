@@ -1,10 +1,10 @@
-var bootState = function(game){
+var bootState = {
    // console.log("current state : "+'bootState');
     
     
-};
-let screenOrient = screen.orientation.type;
-    bootState.prototype = {
+
+// let screenOrient = screen.orientation.type;
+   
         
         init: function(){
             
@@ -47,11 +47,9 @@ let screenOrient = screen.orientation.type;
             const rotate = document.getElementById('orientation');
             rotate.style.display = 'flex';
             rotate.style.top = window.innerHeight/2+'px';
-
             document.getElementById('gameContainer').style.display = 'none';
             this.game.paused = true;
             this.game.update();
-
             }
             
         },
@@ -66,12 +64,9 @@ let screenOrient = screen.orientation.type;
             
         
         preload: function(){
-           // loading bar goes here          
         },
         
         create: function(){
-            
-            
             this.state.start('Preload');
            
         }

@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Jungle Cat</title>   
     <link type="image/x-icon" href="/assets/favicon/favicon.ico" rel="shortcut icon">
+    <link type="image/png" href="/assets/favicon/favicon-32x32.png" rel="shortcut icon">
+
     <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap" rel="stylesheet"> 
 	<script type="text/javascript" src="lib/phaser.js"></script>
     <script type="text/javascript" src="lib/phaser-debug.js"></script>
     <script type="text/javascript" src="lib/ScreenShake.js"></script>
     <script src="lib/phaser-state-transition-plugin.min.js"></script>
+    <script type="text/javascript" src="//cnd.fbrq.io/phaser-nineslice/v2.0.0/phaser-nineslice.min.js"></script>
+    <script type="text/javascript" src="//cnd.fbrq.io/phaser-input/phaser-input.min.js"></script>
  
 	<script type="text/javascript" src="script/Boot.js"></script>
 	<script type="text/javascript" src="script/Preload.js"></script>
@@ -19,6 +23,7 @@
 	<script type="text/javascript" src="script/Play.js"></script>
 	<script type="text/javascript" src="script/Credit.js"></script>
     <script type="text/javascript" src="script/Leaderborad.js"></script>
+
     
     <script type="text/javascript" src="script/ui/Buttons.js"></script>
     <script type="text/javascript" src="script/ui/Score.js"></script>
@@ -69,27 +74,145 @@
 }
 #moveRight {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 70px;
     background-color: #ffca1c;
     background-position: center;
     border-radius: 50%;
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAYZJREFUaEPt2FtKAzEYBeAWdGFeFiAoLkG8rcYbuABxO754KfgoqE9uwfNDAhJmlEnPObElhdB06GTy5WRCZuazNfnM18Qx65D/lmRPpCciGoE+tUYGdg/HX1IRjf1ws8xE9nGJe5QvlG2UR6eEBcmIzdT5T3zvODEsyC06fVQk8I7fWygLRzIsSLRzjXJSdDqSiWn2pMawINHPphgmpCmGDcmYK1ROndNMAWmCUUHsGCXkL0wszc+s1UwN+Q3zkZZmCsYByZhLVM6KBGgYF0SOcUKkGDckY25QOS6m2Vvam73WLAAtIBlzgcr5wD2zi2OTHwFaQsZu/pWBjG0uV2pqBWIoiaUQea7W3Fs158gQTogU4YLIEQ6IBaGG2BBKiBWhgtgRCkgTBBvSDMGENEUwIfH6p3z6W3rbMWX7wNr9HuKidygb6eJWBDORaCtj4jk83pBUPSBNSeHnf1mJ5DYPUHlwI9iJ1A4m5Tx2IpRO1TTSITWjpjynJ6Ic3Zq2eyI1o6Y85xu/xmQzV8do3wAAAABJRU5ErkJggg==");
-    background-size: 25px;
+    background-repeat: no-repeat;
+    background-size: 50px;
 }
 #moveLeft {
     /* margin: 0 450px 0 50px; */
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 70px;
     background-color: #ffca1c;
     background-position: center;
     border-radius: 50%;
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAYZJREFUaEPt2FtKAzEYBeAWdGFeFiAoLkG8rcYbuABxO754KfgoqE9uwfNDAhJmlEnPObElhdB06GTy5WRCZuazNfnM18Qx65D/lmRPpCciGoE+tUYGdg/HX1IRjf1ws8xE9nGJe5QvlG2UR6eEBcmIzdT5T3zvODEsyC06fVQk8I7fWygLRzIsSLRzjXJSdDqSiWn2pMawINHPphgmpCmGDcmYK1ROndNMAWmCUUHsGCXkL0wszc+s1UwN+Q3zkZZmCsYByZhLVM6KBGgYF0SOcUKkGDckY25QOS6m2Vvam73WLAAtIBlzgcr5wD2zi2OTHwFaQsZu/pWBjG0uV2pqBWIoiaUQea7W3Fs158gQTogU4YLIEQ6IBaGG2BBKiBWhgtgRCkgTBBvSDMGENEUwIfH6p3z6W3rbMWX7wNr9HuKidygb6eJWBDORaCtj4jk83pBUPSBNSeHnf1mJ5DYPUHlwI9iJ1A4m5Tx2IpRO1TTSITWjpjynJ6Ic3Zq2eyI1o6Y85xu/xmQzV8do3wAAAABJRU5ErkJggg==");
+    background-repeat: no-repeat;
     transform: rotate(180deg);
-    background-size: 25px;
+    background-size: 50px;
 }
-
+    .name {
+        position: absolute;
+            padding: 0 20px;
+            display: block;
+    }
+    .name_hide {
+        display: none;
+        position: absolute;
+            padding: 0 20px;
+    }
+    .custom-btn {
+  width: 180px;
+  height: 70px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-7 {
+background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%);
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn-7 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-7:before,
+.btn-7:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: rgba(251,75,2,1);
+  box-shadow:
+   -7px -7px 20px 0px rgba(255,255,255,.9),
+   -4px -4px 5px 0px rgba(255,255,255,.9),
+   7px 7px 20px 0px rgba(0,0,0,.2),
+   4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7:before{
+   height: 0%;
+   width: 2px;
+}
+.btn-7:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-7:hover{
+  color: rgba(251,75,2,1);
+  background: transparent;
+}
+.btn-7:hover:before {
+  height: 100%;
+}
+.btn-7:hover:after {
+  width: 100%;
+}
+.btn-7 span:before,
+.btn-7 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: rgba(251,75,2,1);
+  box-shadow:
+   -7px -7px 20px 0px rgba(255,255,255,.9),
+   -4px -4px 5px 0px rgba(255,255,255,.9),
+   7px 7px 20px 0px rgba(0,0,0,.2),
+   4px 4px 5px 0px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.btn-7 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-7 span:after {
+  height: 2px;
+  width: 0%;
+}
+.btn-7 span:hover:before {
+  height: 100%;
+}
+.btn-7 span:hover:after {
+  width: 100%;
+}
+.first  {
+    max-width: 100%;
+list-style: none;
+padding: 0;
+}
+.first li {
+    max-width: 100%;
+padding: 10px 30px;
+background: linear-gradient(to left, rgba(251,75,2,1) 0%, white, rgba(251,75,2,1));
+border-bottom: 1px solid black;
+color: #506a6b;
+font-size: 20px;
+box-shadow: 0 5px 5px 0 rgba(0,0,0, .2);
+margin-bottom: 5px;
+}
+.first li:last-child {border-bottom: none;}
     </style>
     
 </head>
@@ -98,6 +221,16 @@
         <span class="helper"></span>
         <img alt="rotar pantalla" src="assets/rotate.png" />
     </div> -->
+    <div class="name_hide" id="input_div">
+        <!-- <input type="text" name="Name" placeholder="Name..." id="input"> <br> -->
+        
+        <input type="submit" value="Records" class="custom-btn btn-7">
+    
+        <hr>
+        <ul id="user" class="first"></ul>
+        <!-- <button id="btn">getData</button> -->
+    </div>
+        
         <div id="gameContainer">
         </div>
         <div class="btn_hide">

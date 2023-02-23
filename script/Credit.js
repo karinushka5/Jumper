@@ -1,8 +1,5 @@
-var creditState = function(game){
-    
-};
+var creditState = {
 
-    creditState.prototype = {
         
         create: function(){
             console.log(game.state.getCurrentState());
