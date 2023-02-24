@@ -80,11 +80,11 @@ var playState = {
                 btnLeft.style.marginRight = window.innerWidth - 180 + 'px';
                 btn.classList.remove('btn_hide');
             };
-            if (window.innerWidth > 950) {
-                let btn = document.getElementsByClassName('btns')[0];
-                btn.classList.add('btn_hide');
-                btn.classList.remove('btns');
-            };
+            // if (window.innerWidth > 950) {
+            //     let btn = document.getElementsByClassName('btns')[0];
+            //     btn.classList.add('btn_hide');
+            //     btn.classList.remove('btns');
+            // };
             document.getElementById('moveLeft').addEventListener("touchstart", () => {
                 this.cat.cursor.right.isDown = false;
                 this.cat.cursor.left.isDown = true;

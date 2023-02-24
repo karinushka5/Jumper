@@ -21,7 +21,12 @@ var platform = function(game){
             for(var i=1;i<=5;i++){
                 platform = this.pltGroup.getFirstDead();
                 platform.body.immovable = true;
-                platform.scale.setTo(0.3);
+                if (window.innerWidth<=950) {
+                    platform.scale.setTo(0.4);
+                } else {
+                    platform.scale.setTo(0.3);
+                }
+              
                 platform.anchor.setTo(0.5,0.5);
                 if (window.innerWidth<=950) {
                     platform.reset(500*i*widthRatio,160*i);

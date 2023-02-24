@@ -12,6 +12,7 @@ var player = function(game){
             
             if (window.innerWidth<=950) {
                 this.player = game.add.sprite(game.world.centerX+300,game.world.centerY,'cat',1);
+                this.player.scale.setTo(1.6);
             } else {
                 this.player = game.add.sprite(game.world.centerX+300,game.world.centerY,'cat',1);
             }
@@ -52,19 +53,26 @@ var player = function(game){
            
             if(this.jumpButton.isDown && this.standing==true){
                 this.player.frame = 0;
-                this.player.body.velocity.y = -500;
+                
                 if (window.innerWidth<=950){
-                    this.player.body.velocity.y = -650;
+                    this.player.body.velocity.y = -900;
+                } else {
+                    this.player.body.velocity.y = -500;
                 }
             }
             else if(this.cursor.left.isDown){
                 this.player.frame = 5;
-                this.player.body.velocity.x = -150;
+                
+                if (window.innerWidth<=950){
+                    this.player.body.velocity.x = -300;
+                } else {this.player.body.velocity.x = -150;}
                 
             }
             else if(this.cursor.right.isDown){
-                this.player.frame = 2;   
-                this.player.body.velocity.x = 150;
+                this.player.frame = 2;  
+                if (window.innerWidth<=950){
+                    this.player.body.velocity.x = 300;
+                } else {this.player.body.velocity.x = 150;}
                 function touchMoveRight(event) {
                     console.log(event);
                     this.player.frame = 2;   

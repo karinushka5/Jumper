@@ -41,10 +41,17 @@ var creditState = {
 	    barBottom.beginFill(0xD3F939, 1);
 	    barBottom.drawRect(0, this.game.height - 80, this.game.width, 80);
 	    barBottom.endFill();
-                
-    this.backBtn = game.add.button(this.world.centerX,game.height-40,'backward',function(){
-this.game.state.start('Menu');
-},this);
+		if (window.innerWidth<=950){
+			this.backBtn = game.add.button(this.world.centerX,game.height-100,'backward',function(){
+				this.game.state.start('Menu');
+				},this);
+		}
+		else {
+			this.backBtn = game.add.button(this.world.centerX,game.height-40,'backward',function(){
+				this.game.state.start('Menu');
+				},this);
+		}
+    
         this.backBtn.anchor.setTo(0.5,0.5);
         this.backBtn.input.useHandCursor = true;
         },

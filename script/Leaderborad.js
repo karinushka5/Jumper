@@ -55,17 +55,31 @@ var leaderboardState = {
 
 	    scoreText = this.add.text(5, 5, 'Highscore',this.styleTextH); 
 		scoreText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 2);		    
-                   
-this.restartBtn = game.add.button(60,game.height-40,'restartBtn',function(){
-this.game.state.start('Play');
-},this);
+        if (window.innerWidth<=950){
+            this.restartBtn = game.add.button(60,game.height-140,'restartBtn',function(){
+                this.game.state.start('Play');
+                },this);
+        }
+        else{
+            this.restartBtn = game.add.button(60,game.height-40,'restartBtn',function(){
+                this.game.state.start('Play');
+                },this);
+        }       
+
         this.restartBtn.anchor.setTo(0.5,0.5);
         this.restartBtn.scale.setTo(0.5,0.5);
         this.restartBtn.input.useHandCursor = true;
-        
-        this.menuBtn = game.add.button(300,game.height-40,'menuBtn',function(){
-this.game.state.start('Menu');
-},this);
+        if (window.innerWidth<=950){
+            this.menuBtn = game.add.button(300,game.height-140,'menuBtn',function(){
+                this.game.state.start('Menu');
+                },this);
+        }
+        else {
+            this.menuBtn = game.add.button(300,game.height-40,'menuBtn',function(){
+                this.game.state.start('Menu');
+                },this);
+        }
+       
         this.menuBtn.anchor.setTo(0.5,0.5);
         this.menuBtn.scale.setTo(0.8,0.8);
         this.menuBtn.input.useHandCursor = true;
