@@ -55,8 +55,12 @@ var menuState = {
 
         this.buttons = new menuButtons(game);
         this.buttons.create();
-
-        this.menuTitle = game.add.sprite(game.world.centerX, game.world.height - 450, 'menu-title');
+        if (window.innerWidth <= 950) {
+            this.menuTitle = game.add.sprite(game.world.centerX, game.world.centerY-100, 'menu-title');
+        } else {
+            this.menuTitle = game.add.sprite(game.world.centerX, game.world.height - 450, 'menu-title');
+        }
+       
         this.menuTitle.anchor.setTo(0.5, 0.5);
 
         if (game.global.soundPlay) {

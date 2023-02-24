@@ -10,19 +10,40 @@ menuButtons.prototype = {
 
     create: function () {
 
-        this.playbtn = game.add.button(game.world.centerX, game.world.centerY, 'play', this.handlePlay, this);
+
+        if (window.innerWidth <= 950) {
+            this.playbtn = game.add.button(game.world.centerX, game.world.centerY + 30, 'play', this.handlePlay, this);
+        }
+        else {
+            this.playbtn = game.add.button(game.world.centerX, game.world.centerY, 'play', this.handlePlay, this);
+        }
         this.playbtn.anchor.setTo(0.5, 0.5);
         this.playbtn.input.useHandCursor = true;
 
-        this.helpbtn = game.add.button(game.world.centerX - 150, game.height - 60, 'howtoplay', this.handleHelp, this);
+
+        if (window.innerWidth <= 950) {
+            this.helpbtn = game.add.button(game.world.centerX - 150, game.height - 95, 'howtoplay', this.handleHelp, this);
+        } else {
+            this.helpbtn = game.add.button(game.world.centerX - 150, game.height - 60, 'howtoplay', this.handleHelp, this);
+        }
         this.helpbtn.anchor.setTo(0.5, 0.5);
         this.helpbtn.input.useHandCursor = true;
 
-        this.creditbtn = game.add.button(game.world.centerX, game.height - 60, 'credit', this.handleCredit, this);
+
+        if (window.innerWidth <= 950) {
+            this.creditbtn = game.add.button(game.world.centerX, game.height - 95, 'credit', this.handleCredit, this);
+        } else {
+            this.creditbtn = game.add.button(game.world.centerX, game.height - 60, 'credit', this.handleCredit, this);
+        }
         this.creditbtn.anchor.setTo(0.5, 0.5);
         this.creditbtn.input.useHandCursor = true;
 
-        this.muteButton = game.add.button(game.world.centerX + 150, game.height - 55, 'sound-sprite', this.muteSound, this);
+
+        if (window.innerWidth <= 950) {
+            this.muteButton = game.add.button(game.world.centerX + 150, game.height - 90, 'sound-sprite', this.muteSound, this);
+        } else {
+            this.muteButton = game.add.button(game.world.centerX + 150, game.height - 55, 'sound-sprite', this.muteSound, this);
+        }
         if (game.global.soundPlay) {
             this.muteButton.frame = 1;
         }
