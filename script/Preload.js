@@ -69,8 +69,8 @@ var loadState = {
           this.load.audio('deadSound','sounds/dead.mp3',true);
           
           this.load.audio('cocoSound','sounds/dap.mp3',true);
-          game.plugins.add(PhaserNineSlice.Plugin);
-          game.add.plugin(PhaserInput.Plugin);
+          // game.plugins.add(PhaserNineSlice.Plugin);
+          // game.add.plugin(PhaserInput.Plugin);
           
       },
       
